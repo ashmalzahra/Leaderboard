@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+* {
+  font-family: 'Itim', cursive;
+  font-weight: bold;
+}
+
+h1 {
+  padding-top: 5%;
+  padding-left: 2%;
+  padding-bottom: 2%;
+}
+
+h2 {
+  margin: 0;
+}
+
+main {
+  display: flex;
+}
+
+.one {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+.two {
+  margin-left: 5%;
+}
+
+.button-section {
+  display: flex;
+}
+
+.scores {
+  list-style: none;
+  border: 3px solid black;
+  padding-left: 0;
+}
+
+.scores > li:nth-child(odd) {
+  background-color: #ddd;
+}
+
+.each-score {
+  padding: 5px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+}
+
+#refresh {
+  padding: 0 10px;
+  margin: 0 35px;
+  border: 2px solid black;
+  background: transparent;
+  font-weight: bold;
+  box-shadow: 2px 3px;
+}
+
+input[type=text] {
+  margin-bottom: 20px;
+  font-size: 15px;
+  border: 3px solid black;
+}
+
+#submit {
+  padding: 4px 15px;
+  align-self: self-end;
+  background: transparent;
+  font-weight: bold;
+  box-shadow: 2px 3px;
+  border: 2px solid black;
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.7;
+}
