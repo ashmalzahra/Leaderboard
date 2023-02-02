@@ -1,6 +1,6 @@
 const { createHtmlTagObject } = require("html-webpack-plugin");
 
-const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/3mWwBXtnhJMzV9vmFTy1/scores/';
 
 const submit = async (user, score) => {
     await fetch(url, {
