@@ -17,3 +17,22 @@ const submit = async (user, score) => {
     })
 }
 
+class ScoreBoard {
+    constructor(){
+        this.list = []
+    }
+
+    addScore(){
+        const scoresObject = {}
+         scoresObject.user = document.getElementById('name').value
+         scoresObject.score = document.getElementById('score').value
+        if(scoresObject.user != '' && scoresObject.score != ''){
+            this.list.push(scoresObject)
+            submit(scoresObject.user, scoresObject.score)
+        }
+        createHtml()
+        document.getElementById('name').value = null
+        document.getElementById('score').value = null
+
+    }
+}
