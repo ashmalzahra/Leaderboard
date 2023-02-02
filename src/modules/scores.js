@@ -17,7 +17,7 @@ const submit = async (user, score) => {
     })
 }
 
-class ScoreBoard {
+export default class ScoreBoard {
     constructor(){
         this.list = []
     }
