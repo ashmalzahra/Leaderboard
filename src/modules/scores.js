@@ -35,4 +35,15 @@ class ScoreBoard {
         document.getElementById('score').value = null
 
     }
+
+    createHtml(){
+        scores = document.querySelector('.scores')
+        scores.innerHtml = ''
+        this.list.forEach((object) => {
+            const element = document.createElement('li')
+            element.classList.add('each-score')
+            element.innerText = `${scoresObject.user}: ${scoresObject.score}`
+            scores.appendChild(element)
+        })
+    }
 }
