@@ -46,4 +46,11 @@ class ScoreBoard {
             scores.appendChild(element)
         })
     }
-}
+
+    async refresh () {
+        this.response = await fetch(url)
+        .then((response) => response.json())
+        .then(this.list = this.response.result)
+        this.createHtml
+    }
+}   
