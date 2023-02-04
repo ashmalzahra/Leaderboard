@@ -12,3 +12,18 @@ export const addScore = async (user, score) => {
   if (stat !== 201) return `Error ${stat}: ${data.message}`;
   return renderScore(user, score);
 };
+
+export const refresh = async () => {
+  const { data, stat } = await getScores();
+  const scores = document.querySelector('.scores');
+  if (stat !== 200) scoresList.innerHTML = `Error ${stat}: ${data.message}`;
+  else {
+    scores.innerHTML = '';
+    data.result.forEach((e) => {
+      const score = document.createElement('li');
+      score.classList.add('each-score');
+      score.innerHTML = `${e.user}: ${e.score}`;
+      scores.appendChild(score);
+    });
+  }
+};
