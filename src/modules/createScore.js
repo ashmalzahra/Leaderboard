@@ -16,7 +16,7 @@ export const addScore = async (user, score) => {
 export const refresh = async () => {
   const { data, stat } = await getScores();
   const scores = document.querySelector('.scores');
-  if (stat !== 200) scoresList.innerHTML = `Error ${stat}: ${data.message}`;
+  if (stat !== 200) scores.innerHTML = `Error ${stat}: ${data.message}`;
   else {
     scores.innerHTML = '';
     data.result.forEach((e) => {

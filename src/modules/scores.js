@@ -14,8 +14,8 @@ export const createScore = async (user, score) => {
 };
 
 export const getScores = async () => {
-    const response = await fetch(url);
-    const data = await response.json();
-    const stat = response.status;
-    return { data, stat };
-  };
+  const response = await fetch(url);
+  const data = await response.json();
+  const stat = response.status;
+  return { data, stat };
+};
