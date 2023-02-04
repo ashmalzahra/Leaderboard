@@ -48,8 +48,15 @@ Clone this repository to get started with the project, make sure to configure li
 ### Setup
 
 - Clone the folder to your local machine.
-- Open the index.html file in your browser.
+- Open a local copy of the project in your code editor.
+- Open the index.html file from the **/dist** folder in your browser.
+- Run **npm install** to install all dev dependencies for Linters, Webpack & Babel.
 
+### Usage
+
+To run the project, execute the following command:
+
+   - Run **npm run start** in your command terminal.
 
 ### Run tests
 
@@ -96,6 +103,6 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
