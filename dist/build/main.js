@@ -115,7 +115,27 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_createScore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/createScore */ \"./src/modules/createScore.js\");\n\n\n\nconst refreshButton = document.querySelector('#refresh');\nconst submit = document.querySelector('#submit');\nconst username = document.getElementById('name');\nconst score = document.getElementById('score');\n\nsubmit.onsubmit = (e) => {\n  e.preventDefault();\n  const scoreUsername = username.value;\n  const scoreValue = score.value;\n  (0,_modules_createScore__WEBPACK_IMPORTED_MODULE_1__.addToAPI)(scoreUsername, scoreValue);\n  submit.reset();\n};\n\nrefreshButton.onclick = () => (0,_modules_createScore__WEBPACK_IMPORTED_MODULE_1__.refreshScores)();\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/createScore.js":
+/*!************************************!*\
+  !*** ./src/modules/createScore.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addToAPI\": () => (/* binding */ addToAPI),\n/* harmony export */   \"addToDOM\": () => (/* binding */ addToDOM),\n/* harmony export */   \"refreshScores\": () => (/* binding */ refreshScores)\n/* harmony export */ });\n/* harmony import */ var _scores__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scores */ \"./src/modules/scores.js\");\n\n\nconst refreshScores = async () => {\n  const { data, stat } = await (0,_scores__WEBPACK_IMPORTED_MODULE_0__.getScores)();\n  const scoresList = document.querySelector('.scores');\n  if (stat !== 200) scoresList.innerHTML = `Error ${stat}: ${data.message}`;\n  else {\n    scoresList.innerHTML = '';\n    data.result.forEach((e) => {\n      const score = document.createElement('li');\n      score.classList.add('each-score');\n      score.innerHTML = `${e.user}: ${e.score}`;\n      scoresList.appendChild(score);\n    });\n  }\n};\n\nconst addToDOM = (user, score) => {\n  const scoreLi = document.createElement('li');\n  scoreLi.innerHTML = `${user}: ${score}`;\n  scoreLi.classList.add('each-score');\n  document.querySelector('.scores').appendChild(scoreLi);\n};\n\nconst addToAPI = async (user, score) => {\n  const { data, stat } = await (0,_scores__WEBPACK_IMPORTED_MODULE_0__.postScore)(user, score);\n  if (stat !== 201) return `Error ${stat}: ${data.message}`;\n  return addToDOM(user, score);\n};\n\n//# sourceURL=webpack://leaderboard/./src/modules/createScore.js?");
+
+/***/ }),
+
+/***/ "./src/modules/scores.js":
+/*!*******************************!*\
+  !*** ./src/modules/scores.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getScores\": () => (/* binding */ getScores),\n/* harmony export */   \"postScore\": () => (/* binding */ postScore)\n/* harmony export */ });\nconst url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/5GnRcgj9NoHNEzAWACtL/scores/';\n\nconst getScores = async () => {\n  const res = await fetch(url);\n  const data = await res.json();\n  const stat = res.status;\n  return { data, stat };\n};\n\nconst postScore = async (user, score) => {\n  const res = await fetch(url, {\n    method: 'POST',\n    headers: {\n      'content-type': 'application/json',\n    },\n    body: JSON.stringify({ user, score }),\n  });\n  const data = await res.json();\n  const stat = res.status;\n  return { data, stat };\n};\n\n\n\n//# sourceURL=webpack://leaderboard/./src/modules/scores.js?");
 
 /***/ })
 
