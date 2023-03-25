@@ -32,7 +32,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://ashmalzahra.github.io/Leaderboard/dist/)
+[Live Demo Link](https://leaderboard-app-lqug.onrender.com/)
 
 <!-- Features -->
 
